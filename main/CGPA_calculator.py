@@ -71,9 +71,8 @@ for i in range(CourseNum):
         gp.append(5.0)
         grade.append(point)
     if point == "B":
-        grade.append(point)
-        grade.append(point)
         gp.append(4.0)
+        grade.append(point)
     if point == "C":
         gp.append(3.0)
         grade.append(point)
