@@ -2,16 +2,24 @@
 
 import pandas as pd
 
-#Function to Calculate CGPA
-def calculate_cgpa():
+#Function to Calculate GPA
+def calculate_gpa():
     tcu = sum(cu)
     wp = [a*b for a,b in zip(cu,gp)]
     twp = sum(wp)
-    cgpa = twp/tcu
+    gpa = twp/tcu
+    return round(gpa,2)
+
+#Function to Calculate CGPA
+def calculate_cgpa():
+    cgpa = prev_cgpa + gpa/2
+    if prev_cgpa == 0:
+        gpa + gpa/2
     return round(cgpa,2)
 
     # tcu - Total Course Unit, wp - Weighted Point
-    # twp - Total Weighted Point, cgpa - Cummulative Grade Point Average
+    # twp - Total Weighted Point, gpa - Grade Point Average
+    # cpga - Cummulative Grade Point Average
 
 # Function that displays information on Table
 def table():
@@ -24,6 +32,11 @@ def table():
 
 
 # User-defined number of Courses
+
+prev_cgpa = int(input("Enter Current CGPA: ))
+#User inputs old CGPA 
+
+if prev_cgpa == 0:
 while True:
     try:
         CourseNum = int(input("Enter Number Of Courses Attempted: "))
@@ -76,9 +89,12 @@ for i in range(CourseNum):
     print("====================")
 
 # Calling Our functions to produce results
+gpa = calculate_gpa()
 cgpa = calculate_cgpa()
 table()
 print("====================")
 print("====================")
-print("\nYour CGPA is:", cgpa)
+print("Your GPA for the semester is:", gpa)
+print("====================")
+print("Your CGPA is:", cgpa)
 
