@@ -12,9 +12,9 @@ def calculate_gpa():
 
 #Function to Calculate CGPA
 def calculate_cgpa():
-    cgpa = prev_cgpa + gpa/2
+    cgpa =  (gpa+prev_cgpa)/2   
     if prev_cgpa == 0:
-        gpa + gpa/2
+        cgpa = (gpa+gpa)/2	
     return round(cgpa,2)
 
     # tcu - Total Course Unit, wp - Weighted Point
@@ -33,16 +33,15 @@ def table():
 
 # User-defined number of Courses
 
-prev_cgpa = int(input("Enter Current CGPA: ))
+prev_cgpa = eval(input("Enter Current CGPA: "))
 #User inputs old CGPA 
 
-if prev_cgpa == 0:
 while True:
-    try:
-        CourseNum = int(input("Enter Number Of Courses Attempted: "))
-        break
-    except ValueError:
-        print("Invalid input. Please enter a valid number.")
+	   try:
+	       CourseNum = int(input("Enter Number Of Courses Attempted: "))
+	       break
+	   except ValueError:
+	       print("Invalid input. Please enter a valid number.")
 
 # empty list to accept User Variables
 CourseCodes = []
@@ -50,6 +49,9 @@ cu = []
 gp = []
 grade = []
 # cu - Course Unit, gp - Grade Point
+
+print("====================")
+print("====================")
 
 #Running it through a loop to acquire information
 for i in range(CourseNum):
@@ -93,7 +95,15 @@ cgpa = calculate_cgpa()
 table()
 print("====================")
 print("====================")
-print("Your GPA for the semester is:", gpa)
+print("Semester's GPA:", gpa)
 print("====================")
-print("Your CGPA is:", cgpa)
+print("CGPA:", cgpa)
+
+    
+
+
+
+
+
+
 
