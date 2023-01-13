@@ -1,5 +1,7 @@
-#UNILAG Stnadard CPGA Calculator
+#!/usr/bin/python3
+
 import pandas as pd
+
 #Function to Calculate CGPA
 def calculate_cgpa():
     tcu = sum(cu)
@@ -11,7 +13,7 @@ def calculate_cgpa():
     # tcu - Total Course Unit, wp - Weighted Point
     # twp - Total Weighted Point, cgpa - Cummulative Grade Point Average
 
-# Function that displays information on Table 
+# Function that displays information on Table
 def table():
     gt = list(zip(CourseCodes,cu,grade))
     df = pd.DataFrame(gt, columns=['Course Code', 'Course Unit', 'Grade'])
@@ -22,22 +24,36 @@ def table():
 
 
 # User-defined number of Courses
-CourseNum = eval(input("Enter Number Of Courses Attempted: "))
+while True:
+    try:
+        CourseNum = int(input("Enter Number Of Courses Attempted: "))
+        break
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
+
 # empty list to accept User Variables
 CourseCodes = []
 cu = []
 gp = []
 grade = []
 # cu - Course Unit, gp - Grade Point
-# 
 
 #Running it through a loop to acquire information
 for i in range(CourseNum):
     code = input("Enter Course Code{}: ".format(i+1))
     CourseCodes.append(code)
-    unit = eval(input("Enter Course Unit: "))
+    while True:
+        try:
+            unit = int(input("Enter Course Unit: "))
+            break
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
     cu.append(unit)
-    point = (input("Enter Grade (from 'A - F'): ")).upper()
+    while True:
+        point = (input("Enter Grade (from 'A - F'): ")).upper()
+        if point in ["A","B","C","D","E","F"]:
+            break
+        print("Invalid input. Please enter a valid grade.")
     if point == "A":
         gp.append(5.0)
         grade.append(point)
