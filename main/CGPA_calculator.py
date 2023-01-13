@@ -10,16 +10,47 @@ def calculate_gpa():
     gpa = twp/tcu
     return round(gpa,2)
 
+
 #Function to Calculate CGPA
 def calculate_cgpa():
-    cgpa =  (gpa+prev_cgpa)/2   
-    if prev_cgpa == 0:
-        cgpa = (gpa+gpa)/2	
-    return round(cgpa,2)
-
-    # tcu - Total Course Unit, wp - Weighted Point
+	if level == 100:
+		if sem == 1:
+			cpga = 0
+		if sem == 2:
+			cpga = (prev + gpa)/2
+			return round(cpga,2)
+	if level == 200:
+		if sem == 1:
+			cpga =((prev *2) + gpa)/3
+			return round(cpga,2)
+		if sem == 2:
+			cpga = ((prev*3) + gpa)/4
+			return round(cpga,2)
+	if level == 300:
+		if sem == 1:
+			cpga =((prev *4) + gpa)/5
+			return round(cpga,2)
+		if sem == 2:
+			cpga = ((prev*5) + gpa)/6
+			return round(cpga,2)
+	if level == 400:
+		if sem == 1:
+			cpga =((prev *6) + gpa)/7
+			return round(cpga,2)
+		if sem == 2:
+			cpga = ((prev*7) + gpa)/8
+			return round(cpga,2)
+	if level == 500:
+		if sem == 1:
+			cpga =((prev *8) + gpa)/9
+			return round(cpga,2)
+		if sem == 2:
+			cpga = ((prev*9) + gpa)/10
+			return round(cpga,2)
+  # tcu - Total Course Unit, wp - Weighted Point
     # twp - Total Weighted Point, gpa - Grade Point Average
     # cpga - Cummulative Grade Point Average
+
 
 # Function that displays information on Table
 def table():
@@ -27,14 +58,14 @@ def table():
     df = pd.DataFrame(gt, columns=['Course Code', 'Course Unit', 'Grade'])
     df.index = df.index+1
     print(df.to_markdown())
-
     # Zipped the list altogether so as to be able to call it via a DataFrame
 
 
-# User-defined number of Courses
-
-prev_cgpa = eval(input("Enter Current CGPA: "))
-#User inputs old CGPA 
+# User-defined inputs
+level = int(input("Enter Your Level: ")) #Level  - User inputs Class Level
+sem = int(input("Enter Semester: ")) # Sem - User inputs Semester 
+prev = float(input("Enter Current CGPA: ")) #Prev = User inputs old CGP
+print("====================")
 
 while True:
 	   try:
@@ -42,6 +73,7 @@ while True:
 	       break
 	   except ValueError:
 	       print("Invalid input. Please enter a valid number.")
+print("====================")
 
 # empty list to accept User Variables
 CourseCodes = []
@@ -49,9 +81,6 @@ cu = []
 gp = []
 grade = []
 # cu - Course Unit, gp - Grade Point
-
-print("====================")
-print("====================")
 
 #Running it through a loop to acquire information
 for i in range(CourseNum):
@@ -94,14 +123,9 @@ gpa = calculate_gpa()
 cgpa = calculate_cgpa()
 table()
 print("====================")
-print("====================")
 print("Semester's GPA:", gpa)
 print("====================")
 print("CGPA:", cgpa)
-
-    
-
-
 
 
 
