@@ -1,9 +1,9 @@
-#!/ise/bin/python3
+#!/usr/bin/python3
 
 import pandas as pd
 
 #Function to Calculate GPA
-def calculate_gpa():
+def calculate_gpa(cu, gp):
     tcu = sum(cu)
     wp = [a*b for a,b in zip(cu,gp)]
     twp = sum(wp)
@@ -12,7 +12,7 @@ def calculate_gpa():
 
 
 #Function to Calculate CGPA
-def calculate_cgpa():
+def calculate_cgpa(level, sem, prev, gpa):
 	if level == 100:
 		if sem == 1:
 			cpga = 0
@@ -34,7 +34,7 @@ def calculate_cgpa():
 			cpga = ((prev*5) + gpa)/6
 			return round(cpga,2)
 	if level == 400:
-		if sem == 1:
+		if  sem == 1:
 			cpga =((prev *6) + gpa)/7
 			return round(cpga,2)
 		if sem == 2:
@@ -64,17 +64,21 @@ def table():
 while True:
     try:
         level = int(input("Enter Your Level: "))
+        if level < 100 or level > 500 or level not in (100,200,300,400,500):
+            raise ValueError("Invalid input. Please enter a level between 100 - 500.")
         break
-    except ValueError:
-        print("Invalid input. Please enter a valid level.")
-       
-         # acquire sem
+    except ValueError as e:
+        print(e)
+
+ # acquire sem
 while True:
     try:
         sem = int(input("Enter Semester: "))
+        if sem > 2 or sem < 1:
+            raise ValueError
         break
     except ValueError:
-        print("Invalid input. Please enter a valid semester.")
+        print("Invalid input. Please enter a valid semester between 1 and 2.")
         
 while True:             
     try:
@@ -137,10 +141,10 @@ for i in range(CourseNum):
     print("====================")
 
 # Calling Our functions to produce results
-gpa = calculate_gpa()
-cgpa = calculate_cgpa()
+gpa = calculate_gpa(cu, gp)
+cgpa = calculate_cgpa(level, sem, prev, gpa)
 table()
 print("====================")
-print("Semester's GPA:", gpa)
+print("Your GPA for this semester:", gpa)
 print("====================")
-print("CGPA:", cgpa)
+print("Your CGPA:", cgpa)

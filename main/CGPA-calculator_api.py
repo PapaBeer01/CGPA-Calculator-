@@ -65,17 +65,21 @@ def calculate_gpa_cgpa(level:int, sem:int, prev:float, CourseNum: int, CourseCod
 while True:
     try:
         level = int(input("Enter Your Level: "))
+        if level < 100 or level > 500 or level not in (100,200,300,400,500):
+            raise ValueError("Invalid input. Please enter a level between 100 - 500.")
         break
-    except ValueError:
-        print("Invalid input. Please enter a valid level.")
+    except ValueError as e:
+        print(e)
 
-# acquire sem
+   # acquire sem
 while True:
     try:
         sem = int(input("Enter Semester: "))
+        if sem > 2 or sem < 1:
+            raise ValueError
         break
     except ValueError:
-        print("Invalid input. Please enter a valid semester.")
+        print("Invalid input. Please enter a valid semester between 1 and 2.")
 
 while True:
     try:
