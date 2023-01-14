@@ -60,6 +60,14 @@ def table():
     print(df.to_markdown())
     # Zipped the list altogether so as to be able to call it via a DataFrame
 
+# Function to generate User's result
+def result(gpa,cgpa,table_data):
+	gpa = calculate_gpa(cu, gp)
+	cgpa = calculate_cgpa(level, sem, prev, gpa)
+	table_data = table()
+	return ("GPA: "gpa,"CPGA: "cpga,"Table: "table_data)
+		
+		
 # acquire level
 while True:
     try:
@@ -140,11 +148,6 @@ for i in range(CourseNum):
         grade.append(point)
     print("====================")
 
-# Calling Our functions to produce results
-gpa = calculate_gpa(cu, gp)
-cgpa = calculate_cgpa(level, sem, prev, gpa)
-table()
-print("====================")
-print("Your GPA for this semester:", gpa)
-print("====================")
-print("Your CGPA:", cgpa)
+# Printing result
+result = result()
+print(result)
