@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/ise/bin/python3
 
 import pandas as pd
 
@@ -60,11 +60,29 @@ def table():
     print(df.to_markdown())
     # Zipped the list altogether so as to be able to call it via a DataFrame
 
+# acquire level
+while True:
+    try:
+        level = int(input("Enter Your Level: "))
+        break
+    except ValueError:
+        print("Invalid input. Please enter a valid level.")
+       
+         # acquire sem
+while True:
+    try:
+        sem = int(input("Enter Semester: "))
+        break
+    except ValueError:
+        print("Invalid input. Please enter a valid semester.")
+        
+while True:             
+    try:
+        prev = float(input("Enter Current CGPA: "))
+        break
+    except ValueError:
+        print("Invalid input. Please enter a number.")
 
-# User-defined inputs
-level = int(input("Enter Your Level: ")) #Level  - User inputs Class Level
-sem = int(input("Enter Semester: ")) # Sem - User inputs Semester 
-prev = float(input("Enter Current CGPA: ")) #Prev = User inputs old CGP
 print("====================")
 
 while True:
@@ -72,7 +90,7 @@ while True:
 	       CourseNum = int(input("Enter Number Of Courses Attempted: "))
 	       break
 	   except ValueError:
-	       print("Invalid input. Please enter a valid number.")
+	        print("Invalid input. Please enter a valid number.")
 print("====================")
 
 # empty list to accept User Variables
@@ -126,8 +144,3 @@ print("====================")
 print("Semester's GPA:", gpa)
 print("====================")
 print("CGPA:", cgpa)
-
-
-
-
-
