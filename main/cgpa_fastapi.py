@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-
+from typing import List
 import pandas as pd
 
 app = FastAPI()
@@ -97,7 +97,7 @@ def calculate_cgpa(level, sem, prev_cgpa, gpa):
         if sem == 1:
 
             cgpa = (prev_cgpa * 10 + gpa)/11
-
+ 
             return round(cgpa, 2)
 
         elif sem == 2:
@@ -120,9 +120,7 @@ def display_table(course_codes, cu, grades):
 
 # function to generate student's result
 
-def generate_result(course_codes, cu, grades, level, sem,
-
-def generate_result(course_codes, cu, grades, level, sem,prev_cgpa):
+def generate_result(course_codes, cu, grades, level, sem, prev_cgpa):
 
     gpa = calculate_gpa(cu, grades)
 
@@ -142,7 +140,7 @@ async def generate_result_api(course_codes: List[str], cu: List[int], grades: Li
 
         raise HTTPException(status_code=400, detail="Invalid semester. Please enter a valid semester between 1 and 2.")
         
-    if course_unit < 1 or course_unit > 6:
+    if cu < 1 or cu  > 6:
 
         raise HTTPException(status_code=400, detail="Invalid input. Please a valid course unit between 1 - 6."})
 

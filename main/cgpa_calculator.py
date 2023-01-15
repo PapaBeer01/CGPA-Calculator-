@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import pandas as pd
 
 # function to calculate GPA
