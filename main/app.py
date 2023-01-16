@@ -123,8 +123,6 @@ def generate_result():
     # return result
     return jsonify({"GPA": gpa, "CGPA": cgpa, "Result Table": result_table.to_dict()})
 
-if __name__ == "__main__":
-    app = Flask(__name__)
 
 
 if __name__ == '__main__':
