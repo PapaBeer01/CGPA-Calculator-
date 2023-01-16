@@ -93,7 +93,7 @@ def generate_result(course_codes, course_units, grades, level, sem, prev_cgpa):
 # acquire student's level
 try:
     level = int(input("Level: "))
-    if level < 200 or level > 600 or level not in (100, 200, 300, 400, 500, 600):
+    if level < 200 or level > 600 or level not in (200, 300, 400, 500, 600):
         raise ValueError("Invalid input. Please enter a level between 200 - 600.")
 except ValueError as e:
     print(e)
