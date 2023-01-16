@@ -4,8 +4,18 @@ import numpy as np
 
 def calculate_gpa(course_units, grades):
     """
+
     Calculate the GPA given the course units and grades.
+
+    course_units: list of integers representing the course units
+
+    grades: list of integers representing the grades
+
+    return: float rounded to 2 decimal places representing the GPA
+
     """
+    
+    
     total_cu = sum(course_units)
     weighted_points = np.dot(course_units, grades)
     gpa = weighted_points / total_cu
@@ -14,10 +24,14 @@ def calculate_gpa(course_units, grades):
 def calculate_cgpa(level, sem, prev_cgpa, gpa):
 
     """
-
     Calculate the CGPA given the level, semester, previous CGPA, and current GPA.
-
+    level: integer representing the student's level
+    sem: integer representing the student's semester (1 or 2)
+    prev_cgpa: float representing the student's previous CGPA
+    gpa: float representing the student's current semester GPA
+    return: float rounded to 2 decimal places representing the CGPA
     """
+    
 
     cgpa = prev_cgpa #initialize cgpa to the previous cgpa
 
@@ -85,17 +99,33 @@ def calculate_cgpa(level, sem, prev_cgpa, gpa):
 
 def display_table(course_codes, course_units, grades):
     """
-    Display a table of the course codes, course units, and grades.
+    Display a table of the course code, course units and course grade.
+    course_codes: list of strings representing the course codes
+
+    course_units: list of integers representing the course units
+
+    grades: list of integers representing the grades
     """
+    
+
     data = list(zip(course_codes, course_units, grades))
     df = pd.DataFrame(data, columns=['Course Code', 'Course Unit', 'Grade'])
     df.index = df.index + 1
     return df
 
 def generate_result(course_codes, course_units, grades, level, sem, prev_cgpa):
+    
     """
     Generate the student's result and display it in a table.
+    course_codes: list of strings representing the course codes
+    course_units: list of integers representing the course units
+    grades: list of integers representing the grade
+    level: integer representing the student's level
+    sem: integer representing the student's semester (1 or 2)
+    prev_cgpa: float representing the student's previous CGPA
     """
+
+
     gpa = calculate_gpa(course_units, grades)
     cgpa = calculate_cgpa(level, sem, prev_cgpa, gpa)
     print(display_table(course_codes, course_units, grades))
