@@ -141,8 +141,6 @@ def calculate_cgpa_de():
 
         elif sem == 2:
 
-
-
             cgpa = (prev_cgpa * 3 + gpa) / 4
 
     elif level == 400:
