@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 def calculate_gpa(course_units, grades):
     """
     Calculate the GPA given the course units and grades.
@@ -83,7 +81,7 @@ def calculate_cgpa_de(level, sem, prev_cgpa, gpa):
 
 def generate_result(admission_mode, course_codes, course_units, grades, level, sem, prev_cgpa):
     """
-    Generate the student's result and display it in a table.
+    Generate the student's result. 
     """
     gpa = calculate_gpa(course_units, grades)
     print("GPA: ", gpa)
