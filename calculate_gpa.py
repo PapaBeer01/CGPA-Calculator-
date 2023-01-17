@@ -5,10 +5,11 @@ def calculate_gpa(course_units, grades):
     Calculate the GPA given the course units and grades.
     """
     total_cu = sum(course_units)
-    weighted_points = np.dot(course_units, grades)
+    weighted_points = 0
+    for i in range(len(course_units)):
+        weighted_points += course_units[i] * grades[i]
     gpa = weighted_points / total_cu
     return round(gpa, 2)
-
 def calculate_cgpa_utme(level, sem, prev_cgpa, gpa):
 
     """
@@ -80,7 +81,7 @@ def calculate_cgpa_de(level, sem, prev_cgpa, gpa):
             cgpa = (prev_cgpa * 9 + gpa)/10            
     return round(cgpa, 2)
 
-def generate_result(course_codes, course_units, grades, level, sem, prev_cgpa):
+def generate_result(admission_mode, course_codes, course_units, grades, level, sem, prev_cgpa):
     """
     Generate the student's result and display it in a table.
     """
