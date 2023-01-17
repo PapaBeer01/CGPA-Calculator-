@@ -81,21 +81,12 @@ def calculate_cgpa_de(level, sem, prev_cgpa, gpa):
         elif sem == 2:
             cgpa = (prev_cgpa * 9 + gpa)/10            
     return round(cgpa, 2)
-    
-def display_table(course_codes, course_units, grades):
-    """
-    Display a table of the course codes, course units, and grades.
-    """
-    data = list(zip(course_codes, course_units, grades))
-    table = tabulate(data, headers=["Course Code", "Course Units", "Grades"], tablefmt="fancy_grid")
-    print(table)
 
 def generate_result(course_codes, course_units, grades, level, sem, prev_cgpa):
     """
     Generate the student's result and display it in a table.
     """
     gpa = calculate_gpa(course_units, grades)
-    print(display_table(course_codes, course_units, grades))
     print("GPA: ", gpa)
     if admission_mode == 'UTME':
     	cgpa = calculate_cgpa_utme(level, sem, prev_cgpa, gpa)
