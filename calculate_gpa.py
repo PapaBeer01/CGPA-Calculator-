@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-from tabulate import tabulate
-import numpy as np
 
 def calculate_gpa(course_units, grades):
     """
