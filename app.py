@@ -1,15 +1,15 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+app = CORS(app, resources={r'*': {'origins': '*'}})
 
 @app.route('/calculate_gpa', methods=['POST'])
 
 def calculate_gpa():
 
     """
-
     Calculate the GPA given the course units and grades.
-
     """
 
     data = request.get_json()
@@ -221,9 +221,17 @@ def generate_result():
 
     return jsonify(result)
 
+@app.route('/')
+def application_great():
+    return 'This application is great!'
+
+@app.route('/add_names')
+def add_names():
+    first_name = request.args.get('first_name')
+    last_name = request.args.get('last_name')
+    full_name = first_name + " " + last_name
+    return full_name
+
 if __name__ == '__main__':
 
     app.run(debug=True)
-
-
-    
